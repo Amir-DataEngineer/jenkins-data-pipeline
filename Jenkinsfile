@@ -1,13 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
+        stage('Install dependencies') {
             steps {
-                script {
-                    // Choisissez la commande en fonction de votre script
-                    bat  'pip install pandas' // Installer les dépendances
-                    bat  'python data_analysis.py' // Exécuter le script Python
-                }
+                bat '"C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m pip install pandas'
+            }
+        }
+        stage('Run analysis') {
+            steps {
+                bat '"C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" data_analysis.py'
             }
         }
     }
